@@ -7,7 +7,6 @@ from dataclasses import dataclass
 class Article:
     """An article published by a source."""
 
-    identifier: str
     source: str
     title: str
     link: str

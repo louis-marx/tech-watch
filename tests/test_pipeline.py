@@ -1,11 +1,16 @@
-"""Check that the chain runs from end to end."""
+"""Check that the chain runs from end to end, without network."""
 
+import pytest
+
+from tech_watch import collect
 from tech_watch.pipeline import run
 
-SOURCES = ("https://example.org/feed",)
 
+def test_run_produces_an_episode(
+    monkeypatch: pytest.MonkeyPatch, rss_feed: bytes
+) -> None:
+    monkeypatch.setattr(collect, "fetch", lambda _source: rss_feed)
 
-def test_run_produces_an_episode() -> None:
-    episode = run(SOURCES)
+    episode = run(["https://example.org/feed"])
 
-    assert SOURCES[0] in episode
+    assert "First article" in episode
