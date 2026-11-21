@@ -30,4 +30,4 @@ Objectif : mettre en place les briques de l'[architecture](architecture.md), hor
 ## À définir plus tard
 
 - Forme de l'épisode, techniques, cadence, diffusion.
-- Étape suivante : un MVP qui teste la valeur.
+- Étape suivante : un [MVP](mvp.md) qui teste la valeur.
