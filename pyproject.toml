@@ -1,0 +1,83 @@
+[project]
+name = "tech-watch"
+version = "0.0.0"
+description = "RSS feeds in, a personalised podcast out."
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+    "ty>=0.0.107",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E", "W",   # pycodestyle
+    "F",        # pyflakes
+    "I",        # import order
+    "UP",       # modern syntax
+    "B",        # bugbear: likely bugs
+    "N",        # pep8 naming
+    "D",        # docstrings
+    "ANN",      # type annotations everywhere (ty does not require them)
+    "A",        # builtin shadowing
+    "DTZ",      # naive datetimes
+    "S",        # security (bandit)
+    "FBT",      # boolean positional arguments
+    "ARG",      # unused arguments
+    "PL",       # pylint
+    "PT",       # pytest style
+    "C4",       # comprehensions
+    "RET",      # returns
+    "SIM",      # simplifications
+    "PIE",      # misc repetitions
+    "PERF",     # obvious performance
+    "PTH",      # pathlib
+    "ERA",      # commented-out code
+    "T20",      # print
+    "LOG",      # logging usage
+    "G",        # logging format
+    "RUF",      # ruff-specific
+    "BLE",      # blind except
+    "PGH",      # specific noqa and type: ignore
+    "TRY",      # exception patterns
+    "EM",       # exception messages
+    "FURB",     # refurb: modern idioms
+    "TID",      # tidy imports
+    "C90",      # mccabe: function complexity
+]
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",    # pytest relies on assert
+    "D103",    # test names act as docstrings
+    "D101", "D102", "D107",  # test helpers
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 5
+
+[tool.ruff.lint.pylint]
+max-statements = 12
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ty.rules]
+all = "error"
+
+[tool.ty.terminal]
+error-on-warning = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
