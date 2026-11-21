@@ -5,6 +5,9 @@ description = "RSS feeds in, a personalised podcast out."
 requires-python = ">=3.14"
 dependencies = []
 
+[project.scripts]
+tech-watch = "tech_watch.pipeline:main"
+
 [dependency-groups]
 dev = [
     "pre-commit>=4.7.0",
