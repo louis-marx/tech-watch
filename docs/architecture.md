@@ -9,3 +9,5 @@ Outil open source à installer et paramétrer : des flux RSS en entrée, un podc
 - **Règle** : rien de personnel dans le moteur.
 
 À définir plus tard : techniques, cadence, diffusion, forme du paramétrage.
+
+Première étape : voir [walking-skeleton.md](walking-skeleton.md).
