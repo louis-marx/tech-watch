@@ -13,7 +13,6 @@ def rss_feed() -> bytes:
     <item>
       <title>First article</title>
       <link>https://example.org/first</link>
-      <description>First summary</description>
     </item>
     <item>
       <title>Second article</title>

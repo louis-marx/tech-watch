@@ -7,5 +7,6 @@ from tech_watch.domain import Article
 
 def narrate(articles: Sequence[Article]) -> str:
     """Return the text of the episode."""
-    # Shell: titles only.
-    return "\n".join(article.title for article in articles)
+    return "\n\n".join(
+        f"{article.title}\n{article.source}\n{article.link}" for article in articles
+    )

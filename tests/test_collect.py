@@ -15,9 +15,8 @@ def test_parse_feed_returns_the_articles_of_an_rss_feed(rss_feed: bytes) -> None
         source="Example feed",
         title="First article",
         link="https://example.org/first",
-        summary="First summary",
     )
-    assert second.summary == ""
+    assert second.title == "Second article"
 
 
 def test_parse_feed_rejects_a_feed_that_is_not_rss() -> None:

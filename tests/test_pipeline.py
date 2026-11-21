@@ -13,4 +13,6 @@ def test_run_produces_an_episode(
 
     episode = run(["https://example.org/feed"])
 
-    assert "First article" in episode
+    assert episode.startswith(
+        "First article\nExample feed\nhttps://example.org/first\n\nSecond article\n"
+    )

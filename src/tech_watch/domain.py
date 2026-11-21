@@ -10,4 +10,3 @@ class Article:
     source: str
     title: str
     link: str
-    summary: str

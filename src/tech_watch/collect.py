@@ -46,5 +46,4 @@ def _article(item: ElementTree.Element, source: str) -> Article:
         source=source,
         title=item.findtext("title", default=""),
         link=item.findtext("link", default=""),
-        summary=item.findtext("description", default=""),
     )
