@@ -1,18 +1,20 @@
-"""Check that the chain runs from end to end, without network."""
+"""Check that the chain runs from end to end, without network nor voice."""
+
+from pathlib import Path
 
 import pytest
 
-from tech_watch import collect
+from tech_watch import collect, narrate
 from tech_watch.pipeline import run
 
 
-def test_run_produces_an_episode(
+def test_run_speaks_titles_and_sources(
     monkeypatch: pytest.MonkeyPatch, rss_feed: bytes
 ) -> None:
     monkeypatch.setattr(collect, "fetch", lambda _source: rss_feed)
+    spoken: list[str] = []
+    monkeypatch.setattr(narrate, "speak", lambda text, _file: spoken.append(text))
 
-    episode = run(["https://example.org/feed"])
+    run(["https://example.org/feed"], Path("episode.m4a"))
 
-    assert episode.startswith(
-        "First article\nExample feed\nhttps://example.org/first\n\nSecond article\n"
-    )
+    assert spoken == ["First article. Example feed.\n\nSecond article. Example feed."]
